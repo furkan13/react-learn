@@ -22,15 +22,35 @@ import propTypes  from 'prop-types';
 
 class Counter extends Component
 {
+    constructor()
+    {
+        super();
+        this.state={
+            Counter:0
+        }
+        //this.increment=this.increment.bind(this)
+        //if use arrow function binding is not necessary
+    }
     render=()=>
     {
         return(
             <div className='Counter'>
-        <CounterButton/>
-        <CounterButton by={10}/>
-        <CounterButton  by={20}/>
+        <CounterButton incremenMethod={this.increment}/>
+        <CounterButton by={10} incremenMethod={this.increment} />
+        <CounterButton  by={20}incremenMethod={this.increment}/>
+        <span className="count">{this.state.Counter}</span>
       </div>
         )
+    }
+
+    increment=(by)=> {
+        this.setState((prevState)=>{
+           return {Counter:prevState.Counter+by}
+
+        });
+
+
+        
     }
 }
 
@@ -45,32 +65,36 @@ class CounterButton  extends Component
         this.state={
             Counter:0
         }
-        //this.inrecment=this.inrecment.bind(this)
+        //this.increment=this.increment.bind(this)
         //if use arrow function binding is not necessary
     }
+    
+   
 
        render=()=>
     {
         return(
         
             <div className='Counter'>
-            <button onClick={this.inrecment}> 
+            <button onClick={this.increment}> 
                 +{this.props.by}
              </button>
-             <span className="count">{this.state.Counter}</span>
+             {/*<span className="count">{this.state.Counter}</span>*/}
 
          </div>
 
         );
     }
 
-     inrecment=()=>
+    increment=()=>
     {
         console.log('increment')
         this.setState({
             Counter:this.state.Counter+this.props.by
 
         });
+
+        this.props.incremenMethod(this.props.by)
     }
 
 
