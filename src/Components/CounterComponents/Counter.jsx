@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Counter.css';
+import propTypes  from 'prop-types';
 
 //functional components
 // function Counter()
@@ -30,16 +31,17 @@ class Counter extends Component
         this.state={
             Counter:0
         }
-        this.inrecment=this.inrecment.bind(this)
+        //this.inrecment=this.inrecment.bind(this)
+        //if use arrow function binding is not necessary
     }
 
-       render()
+       render=()=>
     {
         return(
         
             <div className='Counter'>
             <button onClick={this.inrecment}> 
-                 +1
+                +{this.props.by}
              </button>
              <span className="count">{this.state.Counter}</span>
 
@@ -48,11 +50,11 @@ class Counter extends Component
         );
     }
 
-     inrecment()
+     inrecment=()=>
     {
         console.log('increment')
         this.setState({
-            Counter:this.state.Counter+1
+            Counter:this.state.Counter+this.props.by
 
         });
     }
@@ -60,5 +62,11 @@ class Counter extends Component
 
 }
 
+Counter.defaultProps={
+    by:1
+}
+Counter.propTypes={
+    by:propTypes.number    
+}
 
 export default Counter

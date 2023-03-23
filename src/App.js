@@ -13,6 +13,8 @@ class App extends Component
     return(
       <div className='App'>
         <Counter/>
+        <Counter  by={10}/>
+        <Counter  by={20}/>
       </div>
       
     );
