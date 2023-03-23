@@ -1,5 +1,7 @@
 import { Component } from "react";
 
+
+//class components
 export default class FirstComponent extends Component
 {
     render()
@@ -12,3 +14,5 @@ export default class FirstComponent extends Component
         );
     }
 }
+
+//export default FirstComponent- standard way

@@ -20,8 +20,22 @@ import propTypes  from 'prop-types';
 //     console.log('increment');
 // }
 
-
 class Counter extends Component
+{
+    render=()=>
+    {
+        return(
+            <div className='Counter'>
+        <CounterButton/>
+        <CounterButton by={10}/>
+        <CounterButton  by={20}/>
+      </div>
+        )
+    }
+}
+
+
+class CounterButton  extends Component
 
 {
 
@@ -62,10 +76,10 @@ class Counter extends Component
 
 }
 
-Counter.defaultProps={
+CounterButton.defaultProps={
     by:1
 }
-Counter.propTypes={
+CounterButton.propTypes={
     by:propTypes.number    
 }
 
